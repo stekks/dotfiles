@@ -46,3 +46,9 @@ end, { desc = "Open quickfix list" })
 vim.keymap.set("n", "<leader>tl", function()
 	utils.toggle("relativenumber")
 end, { desc = "Toggle Line Numbers" })
+
+-- Git fugitve remaps
+vim.keymap.set("n", "<leader>gl", ":diffget //3<cr>", { desc = "Get right (remote) diff" })
+vim.keymap.set("n", "<leader>gh", ":diffget //2<cr>", { desc = "Get left (local) diff" })
+vim.keymap.set("n", "<leader>gs", ":G<cr>", { desc = "Open git fugitive" })
+-- vim.keymap.set("n", "dvv", ":<C-U>execute <SID>StageDiff('Gvdiffsplit!')<CR>", { desc = "Executes 3 way split in fugitive" })
