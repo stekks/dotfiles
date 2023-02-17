@@ -1,0 +1,74 @@
+[alias]
+	co = checkout
+	cb = checkout -b
+	cm = commit -m
+	fa = fetch --all -pv
+	fp = fetch --prune
+	lg = log --color --oneline --graph --decorate --all
+	rv = remote -v
+	rb = rebase
+	rc = rebase --continue
+    ri = rebase --interactive
+    recent = "!r(){ git for-each-ref --sort=-committerdate refs/heads --color=always --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|';}; r"
+    graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    
+[push]
+	default = simple
+[pull]
+	rebase = true
+[commit]
+	verbose = true
+[rebase]
+	autosquash = true
+	autostash = true
+	stat = true
+[credential]
+	helper = manager-core
+	helper = 
+	helper = C:/Users/jbroeze/scoop/apps/git-credential-manager-core/current/git-credential-manager-core.exe
+[credential "helperselector"]
+	selected = manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[user]
+	name = Jan Broeze
+	email = jan.broeze@iddinkgroup.com
+[gui]
+	recentrepo = C:/Users/jbroeze/scoop/buckets/extras
+	recentrepo = C:/Code/Attendance
+[core]
+	autocrlf = false
+	editor = nvim
+	autocrlf = false
+[fetch]
+	prune = false
+# define command which will be used when "nvim" is set as a merge tool
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+# set "nvim" as tool for merging
+[merge]
+  tool = nvim
+# automatically launch merge tool without displaying a prompt
+[mergetool]
+  prompt = false
+[difftool]
+  prompt = true
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+# [merge]
+# 	guitool = winmerge
+# [mergetool "winmerge"]
+# 	path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
+# 	cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
+#[diff]
+#guitool = winmerge
+#[difftool "winmerge"]
+#path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
+#cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
