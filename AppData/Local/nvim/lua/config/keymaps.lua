@@ -27,6 +27,12 @@ vim.keymap.set("n", "<C-M-k>", ":m .-2<cr>==", { desc = "Move up" })
 vim.keymap.set("v", "<C-M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 vim.keymap.set("i", "<C-M-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
 
+-- Move between windows
+vim.keymap.set('n', "<C-h>", "<C-w>h")
+vim.keymap.set('n', "<C-j>", "<C-w>j")
+vim.keymap.set('n', "<C-k>", "<C-w>r")
+vim.keymap.set('n', "<C-l>", "<C-w>l")
+
 -- Better move
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

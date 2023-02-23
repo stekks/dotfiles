@@ -13,11 +13,15 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- load lazy
 require("lazy").setup("plugins", {
-    install = { colorscheme = { "gruvbox-material" } },
+    install = { colorscheme = { "tokyonight" } },
+    -- install = { colorscheme = { "gruvbox-material" } },
     defaults = { lazy = true },
     ui = {
         border = "rounded",
     },
-    checker = { enabled = true },
+    checker = { 
+        enabled = true,
+        notify = false,
+    },
     debug = false,
 })
