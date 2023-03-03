@@ -4,6 +4,7 @@ local M = {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "williamboman/mason-lspconfig.nvim",
+        "Decodetalkers/csharpls-extended-lsp.nvim",
     },
     config = function(_, _)
         local utils = require("utils")
@@ -60,6 +61,17 @@ local M = {
                     cmd = {
                          "rustup", "run", "stable", "rust-analyzer",
                     }
+                })
+            end,
+
+            ["csharp_ls"] = function ()
+                lspconfig.csharp_ls.setup({
+                    on_attach = lsp_utils.on_attach,
+                    capabilities = lsp_utils.capabilities,
+                    handlers = {
+                        ["textDocument/definition"] = require('csharpls_extended').handler,
+                    },
+                    -- cmd = { csharpls },
                 })
             end,
             --            ["clangd"] = function()
