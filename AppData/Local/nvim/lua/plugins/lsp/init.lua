@@ -52,6 +52,16 @@ local M = {
                     }
                 })
             end,
+
+            ["rust_analyzer"] = function ()
+                lspconfig.rust_analyzer.setup({
+                    on_attach = lsp_utils.on_attach,
+                    capabilities = lsp_utils.capabilities,
+                    cmd = {
+                         "rustup", "run", "stable", "rust-analyzer",
+                    }
+                })
+            end,
             --            ["clangd"] = function()
             --                local capabilities_cpp = lsp_utils.capabilities
             --                capabilities_cpp.offsetencoding = { "uts-16" }
