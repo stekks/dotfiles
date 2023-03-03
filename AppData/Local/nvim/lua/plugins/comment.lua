@@ -1,7 +1,7 @@
 -- Enable Comment.nvim 
 return {
     'numToStr/Comment.nvim',
-    lazy = false,
+    event = "VeryLazy",
     opts = {
         mappings = {
             basic = true,
