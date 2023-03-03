@@ -20,12 +20,16 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "p", '"_dP')
 
 -- Move Lines
-vim.keymap.set("n", "<C-M-j>", ":m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("v", "<C-M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vim.keymap.set("i", "<C-M-j>", "<Esc>:m .+1<cr>==gi", { desc = "Move down" })
-vim.keymap.set("n", "<C-M-k>", ":m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("v", "<C-M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-vim.keymap.set("i", "<C-M-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
+vim.keymap.set("n", "<M-j>", ":m .+1<cr>==", { desc = "Move down" })
+vim.keymap.set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+vim.keymap.set("i", "<M-j>", "<Esc>:m .+1<cr>==gi", { desc = "Move down" })
+vim.keymap.set("n", "<M-k>", ":m .-2<cr>==", { desc = "Move up" })
+vim.keymap.set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+vim.keymap.set("i", "<M-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
+
+-- Reimplement visual block mode: create command that executes the default (C-v)
+vim.api.nvim_create_user_command("VisualBlock", "normal! <C-v>", {})
+vim.keymap.set('n', "<M-v>", ":VisualBlock<cr>")
 
 -- Move between windows
 vim.keymap.set('n', "<C-h>", "<C-w>h")
@@ -54,7 +58,11 @@ vim.keymap.set("n", "<leader>tl", function()
 end, { desc = "Toggle Line Numbers" })
 
 -- Git fugitve remaps
+vim.keymap.set("n", "<leader>gs", ":G<cr>", { desc = "Open git fugitive" })
 vim.keymap.set("n", "<leader>gl", ":diffget //3<cr>", { desc = "Get right (remote) diff" })
 vim.keymap.set("n", "<leader>gh", ":diffget //2<cr>", { desc = "Get left (local) diff" })
-vim.keymap.set("n", "<leader>gs", ":G<cr>", { desc = "Open git fugitive" })
 -- vim.keymap.set("n", "dvv", ":<C-U>execute <SID>StageDiff('Gvdiffsplit!')<CR>", { desc = "Executes 3 way split in fugitive" })
+
+-- Open powershell terminal
+vim.keymap.set("n", "<leader>tv", ":vsp term://pwsh<cr>", { desc = "Vertical terminal" })
+vim.keymap.set("n", "<leader>hv", ":sp term://pwsh<cr>", { desc = "Horzontal terminal" })
