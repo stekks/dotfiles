@@ -1,7 +1,7 @@
 -- statusline plugins
 return {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    lazy = false,
     opts = function()
         local navic = require("nvim-navic")
         local function diff_source()
