@@ -64,6 +64,11 @@ disabled = true
 disabled=true
 symbol = " "
 
+[dotnet]
+symbol = '🥅 '
+style = 'green'
+heuristic = false
+
 [conda]
 disabled=true
 symbol = " "

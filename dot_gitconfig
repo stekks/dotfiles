@@ -44,36 +44,39 @@
 [fetch]
     prune = false
 # define command which will be used when "nvim" is set as a merge tool
-[mergetool "nvim"]
-    cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
-# set "nvim" as tool for merging
-[merge]
-    tool = nvim
-# automatically launch merge tool without displaying a prompt
-[mergetool]
-    prompt = false
-[difftool]
-    prompt = false
-[diff]
-    tool = difftastic
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-# [merge]
-# 	guitool = winmerge
-# [mergetool "winmerge"]
-# 	path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
-# 	cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
+; [mergetool "nvim"]
+;     cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+; # set "nvim" as tool for merging
+; [merge]
+;     tool = nvim
+; # automatically launch merge tool without displaying a prompt
+; [mergetool]
+;     prompt = false
+; #[difftool]
+#    prompt = false
 #[diff]
-#guitool = winmerge
-#[difftool "winmerge"]
-#path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
-#cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-    cmd = "'' "
-[mergetool "sourcetree"]
-    cmd = "'' "
-    trustExitCode = true
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-    difftool = true
+#    tool = difftastic
+#[difftool "nvimdiff"]
+#    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+## [merge]
+## 	guitool = winmerge
+## [mergetool "winmerge"]
+## 	path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
+## 	cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
+##[diff]
+##guitool = winmerge
+##[difftool "winmerge"]
+##path = C:/Users/jbroeze/scoop/shims/winmergeu.exe
+##cmd = \"C:/Users/jbroeze/scoop/shims/winmergeu.exe\" -e -u \"$LOCAL\" \"$REMOTE\"
+#[difftool "sourcetree"]
+#    cmd = "'' "
+#[mergetool "sourcetree"]
+#    cmd = "'' "
+#    trustExitCode = true
+#[difftool "difftastic"]
+#    cmd = difft "$LOCAL" "$REMOTE"
+#[pager]
+#    difftool = true
+[safe]
+	directory = C:/Users/jbroeze/AppData/Local/nvim-data/lazy/*
+	directory = *

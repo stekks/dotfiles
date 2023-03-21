@@ -1,45 +1,14 @@
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
-local M = {
+return {
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = "BufReadPost",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        "nvim-treesitter/nvim-treesitter-context",
-    },
-    opts = {
-        highlight = {
-            enable = true,
-            disable = function(_, buf)
-                local max_filesize = 100 * 1024 -- 100 KB
-                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                if ok and stats and stats.size > max_filesize then
-                    return true
-                end
-            end,
-            additional_vim_regex_highlighting = false,
-        },
-        autopairs = { enable = true },
-        autotag = { enable = true },
-        indent = { enable = true },
-        -- ensure_installed = "all",
-        -- ensure_installed = require("utils").lsp_servers,
-        sync_install = true,
-        ignore_install = {}, -- List of parsers to ignore installation
-        refactor = {
-            highlight_definitions = {
-                enable = true,
-                -- Set to false if you have an `updatetime` of ~100.
-                clear_on_cursor_move = true,
-            },
-            highlight_current_scope = { enable = false },
-        },
-    },
-    config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
-        require("treesitter-context").setup({})
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "c_sharp",
+      })
     end,
+  },
 }
-
-return M
