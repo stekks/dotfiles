@@ -227,8 +227,8 @@ local config = {
 				fg_color = "#458588",
 			},
 			new_tab_hover = {
-				bg_color = "#292D3E",
-				fg_color = "#808080",
+				bg_color = "#959DCB",
+				fg_color = "#FFFEFE",
 			},
 		},
 	},
