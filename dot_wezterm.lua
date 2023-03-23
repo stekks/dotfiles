@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local function font_with_fallback(font_family)
 	-- family names, not file names
@@ -158,6 +159,36 @@ local config = {
 		--CTRL+SHIFT	R	ReloadConfiguration
 		--CTRL+SHIFT	L	ShowDebugOverlay (Since: 20210814-124438-54e29167)
 	},
+	
+	-- Geeft error?? (voorbeeld van wezterm website...)
+	mouse_bindings = {
+		-- Scrolling up while holding CTRL increases the font size
+		{
+		  event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+		  mods = 'CTRL',
+		  action = act.IncreaseFontSize,
+		},
+		
+		-- Scrolling down while holding CTRL decreases the font size
+		{
+		  event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+		  mods = 'CTRL',
+		  action = act.DecreaseFontSize,
+		},
+		
+		-- rightclick copy
+		{
+			event = { Down = { streak = 1, button = "Right" } },
+			action = act.CopyTo "Clipboard",
+		},
+		-- ctrl rightclick paste
+		{
+			event = { Down = { streak = 1, button = "Right" } },
+			mods = "CTRL",
+			action = act.PasteFrom "Clipboard",
+		},
+	},
+		
 	set_environment_variables = {},
 
 	-- Tab bar appearance
