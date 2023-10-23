@@ -30,6 +30,71 @@ local function font_and_rules_for_jetbrains()
 	return font, font_rules
 end
 
+local function use_dark()
+	return wezterm.gui.get_appearance():match("Dark.*")
+end
+
+-- Source for the colors: https://github.com/enkia/tokyo-night-vscode-theme#color-palette
+local tokyonight = {
+	-- Dark colorway
+	storm = {
+		colors = {
+			tab_bar = {
+				background = "#24283b",
+				active_tab = {
+					bg_color = "#7aa2f7",
+					fg_color = "#24283b",
+					intensity = "Bold",
+				},
+				inactive_tab = {
+					bg_color = "#24283b",
+					fg_color = "#a9b1d6",
+				},
+				new_tab = {
+					bg_color = "#24283b",
+					fg_color = "#a9b1d6",
+				},
+				inactive_tab_hover = {
+					bg_color = "#414868",
+					fg_color = "#a9b1d6",
+				},
+				new_tab_hover = {
+					bg_color = "#414868",
+					fg_color = "#a9b1d6",
+				},
+			},
+		},
+	},
+	-- Light colorway
+	day = {
+		colors = {
+			tab_bar = {
+				background = "#d5d6db",
+				active_tab = {
+					bg_color = "#34548a",
+					fg_color = "#d5d6db",
+					intensity = "Bold",
+				},
+				inactive_tab = {
+					bg_color = "#d5d6db",
+					fg_color = "#343b58",
+				},
+				new_tab = {
+					bg_color = "#d5d6db",
+					fg_color = "#343b58",
+				},
+				inactive_tab_hover = {
+					bg_color = "#9699a3",
+					fg_color = "#343b58",
+				},
+				new_tab_hover = {
+					bg_color = "#9699a3",
+					fg_color = "#343b58",
+				},
+			},
+		},
+	},
+}
 local config = {
 	check_for_updates = false,
 	-- color_scheme = "Banana Blueberry",
@@ -38,8 +103,9 @@ local config = {
 	-- color_scheme = "GruvboxDark",
 	-- color_scheme = "Catppuccin Frappe",
 	-- color_scheme = "Catppuccin Mocha",
-	color_scheme = "gooey (Gogh)",
 	-- color_scheme = "Gruvbox dark, pale (base16)",
+	color_scheme = use_dark() and "TokyoNightStorm (Gogh)" or "TokyoNightLight (Gogh)",
+	colors = use_dark() and tokyonight.storm.colors or tokyonight.day.colors,
 
 	window_background_opacity = 0.95,
 
@@ -57,7 +123,7 @@ local config = {
 	selection_word_boundary = " \t\n{}[]()\"'`,;:@│*",
 
 	-- font = wezterm.font("JetBrainsMono Nerd Font Mono"),
-	font_size = 10.0,
+	font_size = 11.0,
 
 	default_prog = { "pwsh.exe", "-NoLogo" },
 
@@ -159,110 +225,37 @@ local config = {
 		--CTRL+SHIFT	R	ReloadConfiguration
 		--CTRL+SHIFT	L	ShowDebugOverlay (Since: 20210814-124438-54e29167)
 	},
-	
+
 	-- Geeft error?? (voorbeeld van wezterm website...)
 	mouse_bindings = {
 		-- Scrolling up while holding CTRL increases the font size
 		{
-		  event = { Down = { streak = 1, button = { WheelUp = 1 } } },
-		  mods = 'CTRL',
-		  action = act.IncreaseFontSize,
+			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+			mods = "CTRL",
+			action = act.IncreaseFontSize,
 		},
-		
+
 		-- Scrolling down while holding CTRL decreases the font size
 		{
-		  event = { Down = { streak = 1, button = { WheelDown = 1 } } },
-		  mods = 'CTRL',
-		  action = act.DecreaseFontSize,
+			event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+			mods = "CTRL",
+			action = act.DecreaseFontSize,
 		},
-		
+
 		-- rightclick copy
 		{
 			event = { Down = { streak = 1, button = "Right" } },
-			action = act.CopyTo "Clipboard",
+			action = act.CopyTo("Clipboard"),
 		},
 		-- ctrl rightclick paste
 		{
 			event = { Down = { streak = 1, button = "Right" } },
 			mods = "CTRL",
-			action = act.PasteFrom "Clipboard",
+			action = act.PasteFrom("Clipboard"),
 		},
 	},
-		
+
 	set_environment_variables = {},
-
-	-- Tab bar appearance
-	colors = {
-		tab_bar = {
-
-			-- -- The color of the strip that goes along the top of the window -gruvbox
-			-- background = "#282828",
-			--
-			-- -- The active tab is the one that has focus in the window
-			-- active_tab = {
-			-- 	-- The color of the background area for the tab
-			-- 	bg_color = "#282828",
-			-- 	-- The color of the text for the tab
-			-- 	fg_color = "#fe8019",
-			-- 	intensity = "Normal",
-			-- 	underline = "None",
-			-- 	italic = false,
-			-- 	strikethrough = false,
-			-- },
-			--
-			-- -- Inactive tabs are the tabs that do not have focus
-			-- inactive_tab = {
-			-- 	bg_color = "#282828",
-			-- 	fg_color = "#a89984",
-			-- },
-			-- inactive_tab_hover = {
-			-- 	bg_color = "#282828",
-			-- 	fg_color = "#a89984",
-			-- },
-			--
-			-- new_tab = {
-			-- 	bg_color = "#282828",
-			-- 	fg_color = "#458588",
-			-- },
-			-- new_tab_hover = {
-			-- 	bg_color = "#282828",
-			-- 	fg_color = "#808080",
-			-- },
-			-- The color of the strip that goes along the top of the window - gogh
-			background = "#292D3E",
-
-			-- The active tab is the one that has focus in the window
-			active_tab = {
-				-- The color of the background area for the tab
-				bg_color = "#292D3E",
-				-- The color of the text for the tab
-				fg_color = "#FFFEFE",
-				intensity = "Normal",
-				underline = "None",
-				italic = false,
-				strikethrough = false,
-			},
-
-			-- Inactive tabs are the tabs that do not have focus
-			inactive_tab = {
-				bg_color = "#292D3E",
-				fg_color = "#959DCB",
-			},
-			inactive_tab_hover = {
-				bg_color = "#959DCB",
-				fg_color = "#FFFEFE",
-			},
-
-			new_tab = {
-				bg_color = "#292D3E",
-				fg_color = "#458588",
-			},
-			new_tab_hover = {
-				bg_color = "#959DCB",
-				fg_color = "#FFFEFE",
-			},
-		},
-	},
 }
 
 -- FIXME (<- this is an example of bolded text)
