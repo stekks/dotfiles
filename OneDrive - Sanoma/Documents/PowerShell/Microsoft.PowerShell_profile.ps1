@@ -49,10 +49,16 @@ function spv()
     nvim $args
 }
 
+function minv()
+{
+    $env:NVIM_APPNAME="nvim-min"
+    nvim $args
+}
+
 # neovim config selector
 function ns()
 {
-    $items = "default", "nvim-lazy", "nvim-astro", "nvim-jan", "nvim-nvchad", "nvim-space"
+    $items = "default", "nvim-lazy", "nvim-astro", "nvim-jan", "nvim-nvchad", "nvim-space", "nvim-min"
     $config = $items | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0
 
     if ([string]::IsNullOrEmpty($config))
@@ -89,4 +95,5 @@ $env:FZF_DEFAULT_OPTS="--layout=reverse --inline-info --ansi --bind ctrl-a:selec
 Set-Location \Code
 
 Set-Alias lvim 'C:\Users\jbroeze\.local\bin\lvim.ps1'
+
 
