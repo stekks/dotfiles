@@ -1,3 +1,5 @@
+-- Pluginless 'minimal' config for Neovim
+
 vim.g.mapleader = " " -- sets leader key
 vim.g.netrw_banner = 0 -- gets rid of the annoying banner for netrw
 vim.g.netrw_browse_split = 4 -- open in prior window
