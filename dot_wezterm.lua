@@ -15,12 +15,14 @@ local function font_and_rules_for_jetbrains()
 	local font_rules = {
 		{
 			italic = true,
-			font = font_with_fallback("JetBrains Mono Light Italic"),
+			-- font = font_with_fallback("JetBrains Mono Light Italic"),
+			font = font_with_fallback("Cartograph CF Light Italic"),
 		},
 		{
 			italic = true,
 			intensity = "Bold",
-			font = font_with_fallback("JetBrains Mono Bold Italic"),
+			-- font = font_with_fallback("JetBrains Mono Bold Italic"),
+			font = font_with_fallback("Cartograph CF Bold Italic"),
 		},
 		{
 			intensity = "Bold",
