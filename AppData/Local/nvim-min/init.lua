@@ -116,7 +116,7 @@ vim.keymap.set("n", "<leader>v", ":vsplit") -- space+v creates a veritcal split
 vim.keymap.set("n", "<leader>s", ":split") -- space+s creates a horizontal split
 
 -- Move between windows
-vim.keymap.set("n", "<C-h>", "<C-w>h") -- control+h switches to left split
+vim.keymap.set("n", "<C-h>", "<C-w>h") -- control+h nwitches to left split
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- control+l switches to right split
 vim.keymap.set("n", "<C-j>", "<C-w>j") -- control+j switches to bottom split
 vim.keymap.set("n", "<C-k>", "<C-w>k") -- control+k switches to top split
@@ -153,12 +153,27 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Keep search terms in the center
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Keep cursor in the center when scrolling
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- Better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Paste without replace clipboard
 vim.keymap.set("v", "p", '"_dP')
+
+-- toggle line numbers
+vim.keymap.set("n", "<leader>nn", ":set nonumber!<CR>", { desc = "Toggle numbers" })
+-- toggle relative line numbers
+vim.keymap.set("n", "<leader>nr", ":set relativenumber!<CR>", { desc = "Toggle numbers" })
+-- toggle line wrap
+vim.keymap.set("n", "<leader>w", ":set wrap! wrap?<CR>", { desc = "Toggle line wrap" })
 
 -- Move Lines
 vim.keymap.set("n", "<M-j>", ":m .+1<cr>==", { desc = "Move down" })
