@@ -133,6 +133,10 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>") -- Control+Right res
 -- Open netrw in 25% split in tree view
 vim.keymap.set("n", "<leader>e", ":25Lex<CR>") -- space+e toggles netrw tree view
 
+-- Add empty line above or under cursor without going to insert mode
+vim.keymap.set("n", "oo", ":pu! _<cr>:']+1<cr>")
+vim.keymap.set("n", "OO", ":pu _<cr>:'[-1<cr>")
+
 -- Automatically close brackets, parethesis, and quotes
 vim.keymap.set("i", "'", "''<left>")
 vim.keymap.set("i", '"', '""<left>')
