@@ -11,24 +11,25 @@ end
 
 local function font_and_rules_for_jetbrains()
 	-- Use a _very slightly_ lighter variant, so that regular bold really stand out
-	local font = wezterm.font({ family = "JetBrains Mono", weight = "Light" })
-	-- local font = font_with_fallback("JetBrains Mono Light")
+	-- local font = wezterm.font({ family = "JetBrains Mono", weight = "Light" })
+	-- local font = wezterm.font({ family = "Monaspace Argon", weight = "Light" })
+	local font = font_with_fallback("JetBrains Mono Light")
 	local font_rules = {
 		{
 			italic = true,
-			-- font = font_with_fallback("JetBrains Mono Light Italic"),
-			font = wezterm.font({ family = "Cartograph CF", style = "Italic", weight = "Light" }),
+			font = font_with_fallback("JetBrains Mono Light Italic"),
+			-- font = wezterm.font({ family = "Cartograph CF", style = "Italic", weight = "Light" }),
 		},
 		{
 			italic = true,
 			intensity = "Bold",
-			-- font = font_with_fallback("JetBrains Mono Bold Italic"),
-			font = wezterm.font({ family = "Cartograph CF", style = "Italic", weight = "Bold" }),
+			font = font_with_fallback("JetBrains Mono Bold Italic"),
+			-- font = wezterm.font({ family = "Cartograph CF", style = "Italic", weight = "Bold" }),
 		},
 		{
 			intensity = "Bold",
-			-- font = font_with_fallback("JetBrains Mono Bold"),
-			font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
+			font = font_with_fallback("JetBrains Mono Bold"),
+			-- font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
 		},
 	}
 	return font, font_rules

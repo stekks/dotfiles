@@ -15,6 +15,9 @@
     po = push origin
     ca = co feature/attendance20
     pa = pull origin feature/attendance20
+	lg = log --pretty=tformat:'%C(auto,red)%m %C(auto,yellow)%h%C(auto,magenta) %G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(15,trunc)%aN%C(auto,reset)%s%C(auto,red) %gD %D' --date=short
+	adog = log --all --decorate --oneline --graph
+    dog = log --decorate --oneline --graph
 
 [push]
     default = simple
@@ -46,6 +49,24 @@
     autocrlf = false
 [fetch]
     prune = false
+[include]
+    path = C:/Users/jbroeze/.config/delta/themes.gitconfig
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    features = colored-trogon
+    side-by-side = true
+    navigate = true
+    light = false
+[merge]
+    conflictsttyle = diff3
+    tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[diff]
+    colorMoved = default
 # define command which will be used when "nvim" is set as a merge tool
 ; [mergetool "nvim"]
 ;     cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"

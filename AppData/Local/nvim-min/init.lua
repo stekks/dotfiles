@@ -134,8 +134,8 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>") -- Control+Right res
 vim.keymap.set("n", "<leader>e", ":25Lex<CR>") -- space+e toggles netrw tree view
 
 -- Add empty line above or under cursor without going to insert mode
-vim.keymap.set("n", "oo", ":pu! _<cr>:']+1<cr>")
-vim.keymap.set("n", "OO", ":pu _<cr>:'[-1<cr>")
+vim.keymap.set("n", "<leader>o", ":pu! _<cr>:']+1<cr>")
+vim.keymap.set("n", "<leader>O", ":pu _<cr>:'[-1<cr>")
 
 -- Automatically close brackets, parethesis, and quotes
 vim.keymap.set("i", "'", "''<left>")
@@ -151,11 +151,11 @@ vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>') -- Replace all 
 vim.keymap.set("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S
 
 -- Keymaps for better default experience
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Keep search terms in the center
 vim.keymap.set("n", "n", "nzzzv")
@@ -189,23 +189,27 @@ vim.keymap.set("i", "<M-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
 
 -- Reimplement visual block mode: create command that executes the default (C-v)
 vim.api.nvim_create_user_command("VisualBlock", "normal! <C-v>", {})
-vim.keymap.set('n', "<M-v>", ":VisualBlock<cr>")
+vim.keymap.set("n", "<M-v>", ":VisualBlock<cr>")
 
 -- Better move
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 --vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Open quickfix list
-vim.keymap.set("n", "<leader>q", function() vim.diagnostic.setloclist() end, { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>q", function()
+	vim.diagnostic.setloclist()
+end, { desc = "Open quickfix list" })
 
 -- Toggle options
-vim.keymap.set("n", "<leader>tl", function() utils.toggle("relativenumber") end, { desc = "Toggle Line Numbers" })
+vim.keymap.set("n", "<leader>tl", function()
+	utils.toggle("relativenumber")
+end, { desc = "Toggle Line Numbers" })
 
 -- Open powershell terminal
 vim.keymap.set("n", "<leader>tv", ":vsp term://pwsh<cr>", { desc = "Vertical terminal" })

@@ -14,5 +14,5 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "p", '"_dP')
 
 -- Add empty line above or under cursor without going to insert mode
-vim.keymap.set("n", "oo", ":pu! _<cr>:']+1<cr>")
-vim.keymap.set("n", "OO", ":pu _<cr>:'[-1<cr>")
+vim.keymap.set("n", "<leader>o", ":pu! _<cr>:']+1<cr>")
+vim.keymap.set("n", "<leader>O", ":pu _<cr>:'[-1<cr>")

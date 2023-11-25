@@ -1,10 +1,11 @@
 Invoke-Expression (&starship init powershell)
-Import-Module PowerColorLS
+Import-Module posh-git
 
 # Aliasses
 New-Alias which get-command
 New-Alias lg lazygit
 Set-Alias -Name ls -Value PowerColorLS -Option AllScope
+Set-Alias lvim 'C:\Users\jbroeze\.local\bin\lvim.ps1'
 
 # default nvim is nvim-lazy
 $env:NVIM_APPNAME="nvim-lazy"
@@ -80,7 +81,20 @@ function ns()
 #Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
 #Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Windows
+# Set-PSReadLineOption -EditMode Windows
+Set-PSReadLineOption -EditMode vi
+Set-PSReadLineOption -Colors @{
+    # Command            = 'Magenta'
+    # Number             = 'DarkGray'
+    # Member             = 'DarkGray'
+    # Operator           = 'DarkGray'
+    # Type               = 'DarkGray'
+    # Variable           = 'Gray'
+    Parameter          = 'DarkGreen'
+    # ContinuationPrompt = 'DarkGray'
+    # Default            = 'DarkGray'
+}
+
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 # (Ps)FZF: replace 'Ctrl+t' and 'Ctrl+r' with PsFZF 
@@ -93,7 +107,5 @@ $env:FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 $env:FZF_DEFAULT_OPTS="--layout=reverse --inline-info --ansi --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle"
 
 Set-Location \Code
-
-Set-Alias lvim 'C:\Users\jbroeze\.local\bin\lvim.ps1'
 
 
